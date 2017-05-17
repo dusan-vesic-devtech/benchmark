@@ -4,22 +4,22 @@ namespace Vesic\Benchmark;
 
 class Benchmark {
     
-    protected $start;
+    protected $_start;
     
-    protected $end;
+    protected $_end;
     
-    public function start() {
+    public function startTime() {
         $this->start = microtime(true);
     }
     
-    public function end() {
+    public function endTime() {
         $this->end = microtime(true);
     }
     
     public function run($fn) {
-        $this->start();
+        $this->startTime();
         call_user_func_array($fn, []);
-        $this->end();
+        $this->endTime();
         echo round(($this->end - $this->start), 3);
     }
     
