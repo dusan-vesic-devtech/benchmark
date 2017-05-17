@@ -16,9 +16,10 @@ class Benchmark {
         $this->_memoryUsage = memory_get_usage();
     }
     
-    public function run($fn) {
+    public function run($args) {
+        $args = func_get_args();
         $this->startTime();
-        call_user_func_array($fn, []);
+        call_user_func_array($args[0], array_slice($args, 1));
         $this->endTime();
         echo $this->output(round(($this->_end - $this->_start), 3), $this->convertToHumanReadable($this->_memoryUsage));
     }
