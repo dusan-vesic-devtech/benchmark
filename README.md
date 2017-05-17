@@ -33,5 +33,6 @@ $benchmark->run('functionWithParams', 1e6);
 
 ## Output
 ```
-Formated output here
+Your code performance:
+Time - 0.017. Memory - 356.75 kb
 ```
