@@ -3,7 +3,6 @@
 namespace Vesic\Benchmark;
 
 class Benchmark {
-    
     protected $_start;
     protected $_end;
     protected $_memoryUsage;
@@ -21,12 +20,14 @@ class Benchmark {
         $this->startTime();
         call_user_func_array($fn, []);
         $this->endTime();
-        echo 'time: ' . round(($this->_end - $this->_start), 3) . '. Memory: ' . $this->convertToHumanReadable($this->_memoryUsage);
+        echo $this->output(round(($this->_end - $this->_start), 3), $this->convertToHumanReadable($this->_memoryUsage));
     }
     
-    public function convertToHumanReadable($size) {
-        $unit = array('b','kb','mb','gb','tb','pb');
-        return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
+    public function convertToHumanReadable($memory) {
+        return round($memory / pow(1024, ($i=floor(log($memory, 1024)))), 2). ' ' . ['b','kb','mb','gb','tb','pb'][$i];
     }
     
+    public function output($time, $memory) {
+        return sprintf("Your code performance:\nTime - %s. Memory - %s\n", $time, $memory);
+    }
 }

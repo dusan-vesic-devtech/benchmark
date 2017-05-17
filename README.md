@@ -3,7 +3,7 @@ Benchmark your code
 
 ## Installation
 ```
-composer require vesic\benchmark;
+composer require vesic/benchmark
 ```
 
 ## Basic Usage
